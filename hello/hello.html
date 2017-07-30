@@ -1,0 +1,81 @@
+<DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="msg">
+      {{ message }}
+    </div>
+    <div id="msg2">
+      <span v-bind:title="message">
+        msg2
+      </span>
+    </div>
+    <div id="msg3">
+      <p v-if="seen">Test v-if</p>
+    </div>
+    <div id="msg4">
+      <ol>
+        <li v-for="todo in todolist">
+          {{ todo.text }}
+        </li>
+      </ol>
+    </div>
+    <div id="msg5">
+      <p> {{ message }}</p>
+      <button v-on:click="reverseMessage">reverse</button>
+    </div>
+    <div id="msg6">
+      <p>{{ message }}</p>
+      <input v-model="message">
+    </div>
+  <body>
+  <script>
+    var msg = new Vue({
+      el: '#msg',
+      data: {
+        message: 'Hello Vue!'
+      }
+    });
+    var msg2 = new Vue({
+      el: '#msg2',
+      data: {
+        message: 'page load at ' + new Date()
+      }
+    });
+    var msg3 = new Vue({
+      el: '#msg3',
+      data: {
+        seen: true
+      }
+    });
+    var msg4 = new Vue({
+      el: '#msg4',
+      data: {
+        todolist: [
+          { text: 'learn javascript' },
+          { text: 'learn vue' },
+          { text: 'do project' }
+        ]
+      }
+    });
+    var msg5 = new Vue({
+      el: '#msg5',
+      data: {
+        message: 'Hello Vue.js!'
+      },
+      methods: {
+        reverseMessage: function() {
+          this.message = this.message.split('').reverse().join('');
+        }
+      }
+    });
+    var msg6 = new Vue({
+      el: '#msg6',
+      data: {
+        message: 'Hi!'
+      }
+    });
+  </script>
+</html>
